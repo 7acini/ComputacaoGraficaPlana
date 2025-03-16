@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Styles/ComputacaoGraficaPlana.css">
+    <script src="../Javascript/ComputacaoGraficaPlana.js"></script>
+    <script src="../Classes/Ponto.js"></script>
+    <title>Computação Gráfica Plana</title>
+</head>
+<body>
+    <div id="layout">
+        <canvas id="sessao-canvas">
+
+        </canvas>
+        <section id="sessao-direita">
+            <div id="div-titulo-geometria-plana">
+                <h2>Geometria plana</h2>
+            </div>
+            <div id="div-criar-ponto">
+                <div>
+                    <span>Criar ponto</span>
+                </div>
+                <div id="div-inputs-coordenadas">
+                    <input id="coordenada-x" type="text" title="Coordenada X" placeholder="Coordenada X">
+                    <input id="coordenada-y" type="text" title="Coordenada Y" placeholder="Coordenada Y">
+                </div>
+                <div id="div-acoes-pontos">
+                    <button id="criar-ponto" type="button" title="Criar ponto">Criar</button>
+                    <button id="excluir-ultimo-ponto" type="button" title="Excluir último ponto criado">
+                        Excluir
+                    </button>
+                    <button id="desenhar-pontos" type="button" title="Desenhar pontos">Desenhar</button>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <span>
+                        Pontos criados:
+                    </span>
+                    <span id="pontos-criados">
+                        
+                    </span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <!-- Translação -->
+                    <div class="grupo-botoes">
+                        <h4>Translação</h4>
+                        <button type="button" title="Translação para direita">➡️ Direita</button>
+                        <button type="button" title="Translação para esquerda">⬅️ Esquerda</button>
+                        <button type="button" title="Translação para cima">⬆️ Cima</button>
+                        <button type="button" title="Translação para baixo">⬇️ Baixo</button>
+                    </div>
+                
+                    <!-- Escala -->
+                    <div class="grupo-botoes">
+                        <h4>Escala</h4>
+                        <button type="button" title="Aumentar escala">🔍 Aumentar</button>
+                        <button type="button" title="Diminuir escala">🔎 Diminuir</button>
+                    </div>
+                
+                    <!-- Rotação -->
+                    <div class="grupo-botoes">
+                        <h4>Rotação</h4>
+                        <button type="button" title="Rotacionar 45⁰ sentido horário">↻ Rotacionar 45°</button>
+                        <button type="button" title="Rotacionar 45⁰ sentido anti-horário">↺ Rotacionar 45°</button>
+                    </div>
+                
+                    <!-- Cisalhamento -->
+                    <div class="grupo-botoes">
+                        <h4>Cisalhamento</h4>
+                        <button type="button" title="Cisalhar sentido horário">↦ Cisalhar</button>
+                        <button type="button" title="Cisalhar sentido anti-horário">↤ Cisalhar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

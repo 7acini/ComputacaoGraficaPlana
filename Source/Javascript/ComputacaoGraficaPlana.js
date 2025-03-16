@@ -137,15 +137,18 @@ const desenharPontos = () => {
         ctx.lineWidth = 1; // Espessura da linha
         ctx.imageSmoothingEnabled = false; // Evita borrado
 
+        // Começa o desenho
+        // Math.round utilizado para arredondar as coordenadas para evitar serrilhados nas linhas
         const pontoInicial = pontos[0];
-
         ctx.beginPath();
-        ctx.moveTo(Math.round(pontoInicial.x) + 0.5, Math.round(pontoInicial.y) + 0.5);
+        ctx.moveTo(Math.round(pontoInicial.x), Math.round(pontoInicial.y));
 
+        // Liga os pontos
         pontos.forEach(p => {
-            ctx.lineTo(Math.round(p.x) + 0.5, Math.round(p.y) + 0.5);
+            ctx.lineTo(Math.round(p.x), Math.round(p.y));
         });
 
+        // Fecha o desenho voltando ao ponto inicial
         ctx.closePath();
         ctx.stroke();
     } else {

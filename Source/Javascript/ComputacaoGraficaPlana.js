@@ -144,7 +144,7 @@ const desenharPontos = () => {
         const canvas = document.getElementById('sessao-canvas');
         const ctx = canvas.getContext("2d");
 
-        // Ajustar a resolução do canvas para evitar borrado
+        // Ajusta a resolução do canvas para evitar borrado
         ajustarResolucaoCanvas();
 
         // Limpa o canvas antes de desenhar
@@ -156,23 +156,31 @@ const desenharPontos = () => {
         ctx.lineWidth = 1; // Espessura da linha
         ctx.imageSmoothingEnabled = false; // Evita borrado
 
-        // Começa o desenho
-        // Math.round utilizado para arredondar as coordenadas para evitar serrilhados nas linhas
+        // Define as propriedades de sombra para o preenchimento
+        ctx.shadowOffsetX = 15;
+        ctx.shadowOffsetY = 15;
+        ctx.shadowBlur = 5;
+        ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+
+        // Inicia o desenho do caminho
         const pontoInicial = pontos[0];
         ctx.beginPath();
         ctx.moveTo(Math.round(pontoInicial.x), Math.round(pontoInicial.y));
 
-        // Liga os pontos
         pontos.forEach(p => {
             ctx.lineTo(Math.round(p.x), Math.round(p.y));
         });
 
-        // Fecha o desenho voltando ao ponto inicial
+        // Fecha o caminho do polígono
         ctx.closePath();
         
-        // Preenche o polígono
+        // Preenche o polígono com a sombra aplicada
         ctx.fill();
-        // Desenha a borda do polígono
+        
+        // Remove as configurações de sombra para que o stroke não seja afetado
+        ctx.shadowColor = "transparent";
+        
+        // Desenha o contorno (stroke) sem sombra
         ctx.stroke();
     } else {
         throw new Error(`O número de pontos necessários para fechar um desenho é ${quantidadeMinimaPontos}.`);

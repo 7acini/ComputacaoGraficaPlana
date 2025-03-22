@@ -121,6 +121,22 @@ const todosOsPontos = () => {
     return todosPontos;
 }
 
+/**
+ * Obtém a cor da linha do polígono selecionada pelo usuário
+ * @returns {CorHexadecimal}
+ */
+const obterCorDaLinhaPoligono = () => {
+    return document.getElementById('color-picker-linha').value;
+}
+
+/**
+ * Obtém a cor do polígono selecionada pelo usuário
+ * @returns {CorHexadecimal}
+ */
+const obterCorDoPoligono = () => {
+    return document.getElementById('color-picker-poligono').value;
+}
+
 const desenharPontos = () => {
     const quantidadeMinimaPontos = 3;
 
@@ -133,7 +149,10 @@ const desenharPontos = () => {
 
         // Limpa o canvas antes de desenhar
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = "blue"; // Cor da linha
+        
+        // Define as cores utilizando os métodos criados
+        ctx.strokeStyle = obterCorDaLinhaPoligono();
+        ctx.fillStyle = obterCorDoPoligono();
         ctx.lineWidth = 1; // Espessura da linha
         ctx.imageSmoothingEnabled = false; // Evita borrado
 
@@ -150,6 +169,10 @@ const desenharPontos = () => {
 
         // Fecha o desenho voltando ao ponto inicial
         ctx.closePath();
+        
+        // Preenche o polígono
+        ctx.fill();
+        // Desenha a borda do polígono
         ctx.stroke();
     } else {
         throw new Error(`O número de pontos necessários para fechar um desenho é ${quantidadeMinimaPontos}.`);

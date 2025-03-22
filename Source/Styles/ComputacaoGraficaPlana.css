@@ -1,192 +1,158 @@
 /* Reset básico */
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   
-/* Estilos base */
-html, body {
+  /* Estilos base */
+  html, body {
     height: 100%;
     width: 100%;
     font-family: 'Roboto', sans-serif;
     background-color: #f8f9fa;
-}
+  }
   
-/* Container principal com layout flex */
-#layout {
+  /* Container principal com layout flex */
+  #layout {
     display: flex;
     width: 100%;
     height: 100vh;
-}
+  }
   
-/* Divisão em duas metades iguais */
-#sessao-canvas,
-#sessao-direita {
+  /* Lado esquerdo: canvas */
+  #sessao-canvas {
     width: 50%;
     height: 100%;
-}
-  
-/* Lado esquerdo: canvas */
-#sessao-canvas {
     background-color: white;
-}
+  }
   
-/* Lado direito: seção de controles */
-#sessao-direita {
+  /* Lado direito: seção de controles */
+  #sessao-direita {
+    width: 50%;
+    height: 100%;
     background-color: blue;
     box-shadow: -5px 0 5px rgba(0, 0, 0, 0.5);
     padding: 20px;
     color: #fff;
     overflow-y: auto;
-}
+  }
   
-/* Título principal da seção direita */
-#div-titulo-geometria-plana {
+  /* Título */
+  #div-titulo-geometria-plana {
     text-align: center;
     margin-bottom: 20px;
-}
+  }
   
-#div-titulo-geometria-plana h2 {
+  #div-titulo-geometria-plana h2 {
     font-size: 24px;
     font-weight: 700;
-}
+  }
   
-/* Bloco "Criar ponto" */
-#div-criar-ponto {
+  /* Bloco "Criar ponto" */
+  #div-criar-ponto {
     margin-bottom: 20px;
-}
+  }
   
-/* Cabeçalho do bloco "Criar ponto" */
-#div-criar-ponto > div:first-child {
+  #div-criar-ponto > div:first-child {
     text-align: center;
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 10px;
-}
+  }
   
-/* Inputs e botão do bloco "Criar ponto" */
-#div-criar-ponto > div:last-child {
+  #div-criar-ponto > div:last-child {
     display: flex;
     justify-content: center;
     gap: 10px;
-}
+  }
   
-#div-criar-ponto input[type="text"] {
+  #div-criar-ponto input[type="text"] {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 120px;
-}
+  }
   
-#div-criar-ponto button {
+  #div-criar-ponto button {
     padding: 8px 12px;
     border: none;
     border-radius: 4px;
     color: #fff;
-    cursor: pointer;
     font-weight: 500;
     cursor: pointer;
-}
+  }
   
-#div-inputs-coordenadas {
+  #div-inputs-coordenadas {
     text-align: center;
-}
-
-#div-acoes-pontos {
+  }
+  
+  #div-acoes-pontos,
+  #div-pontos-criados,
+  #div-desenhar {
+    text-align: center;
     margin-top: 1em;
-}
-
-#criar-ponto {
+  }
+  
+  #criar-ponto {
     background-color: green;
-}
-
-#criar-ponto:hover {
+  }
+  
+  #criar-ponto:hover {
     background-color: #0B9100;
-}
-
-#excluir-ultimo-ponto {
+  }
+  
+  #excluir-ultimo-ponto {
     background-color: red;
-}
-
-#excluir-ultimo-ponto:hover {
+  }
+  
+  #excluir-ultimo-ponto:hover {
     background-color: #FF392A;
-}
-
-#desenhar-pontos {
+  }
+  
+  #desenhar-pontos {
     background-color: #021894;
-}
-
-#desenhar-pontos:hover {
+  }
+  
+  #desenhar-pontos:hover {
     background-color: #031FC2;
-}
-
-/* Bloco de "Pontos criados" */
-#sessao-direita > div:nth-child(3) {
+  }
+  
+  /* Bloco de transformações geométricas */
+  /* Usando o ID específico, não depende da ordem */
+  #div-transformacoes {
     margin-bottom: 20px;
     text-align: center;
-}
+  }
   
-#sessao-direita > div:nth-child(3) span:first-child {
-    font-weight: 500;
-    margin-right: 5px;
-}
-  
-#sessao-direita > div:nth-child(3) span:last-child {
-    font-weight: 400;
-}
-  
-/* Bloco de "Transformações geométricas" */
-#sessao-direita > div:nth-child(4) {
+  #div-transformacoes .grupo-botoes {
     margin-bottom: 20px;
-}
+  }
   
-#sessao-direita > div:nth-child(4) h3 {
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: 600;
-}
-  
-/* Contêiner dos botões de transformação */
-#sessao-direita > div:nth-child(4) > div {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-  
-/* Botões de transformação */
-#sessao-direita > div:nth-child(4) button {
-   padding: 8px 10px;
-   border: none;
-   border-radius: 4px;
-   background-color: #6c757d; /* tom de cinza */
-   color: #fff;
-   cursor: pointer;
-   font-size: 14px;
-}
- 
-#sessao-direita > div:nth-child(4) button:hover {
-   background-color: #5a6268;
-}  
-
-  /* Agrupamento dos botões */
-.grupo-botoes {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.grupo-botoes h4 {
+  #div-transformacoes .grupo-botoes h4 {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 10px;
-}
-
-/* Contêiner dos botões */
-.grupo-botoes div {
+  }
+  
+  #div-transformacoes .grupo-botoes div {
     display: flex;
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
-}
+  }
+  
+  #div-transformacoes .grupo-botoes button {
+    padding: 8px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6c757d; /* tom de cinza */
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  #div-transformacoes .grupo-botoes button:hover {
+    background-color: #5a6268;
+  }
+  

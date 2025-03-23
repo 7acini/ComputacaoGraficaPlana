@@ -31,11 +31,43 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             desenharPontos();
         } catch (error) {
-            alert(`Ocorreu um erro inesperado ao tentar desenhar: ${error.message}`)
+            alert(`Ocorreu um erro inesperado ao tentar desenhar: ${error.message}`);
         }
     });
 
+    // Event listener para rotação horário (45°)
+    document.getElementById('rotacionar-horario').addEventListener('click', function() {
+        aplicarRotacao(45);
+    });
+
+    // Event listener para rotação anti-horário (-45°)
+    document.getElementById('rotacionar-antihorario').addEventListener('click', function() {
+        aplicarRotacao(-45);
+    });
+
 });
+
+/**
+ * Aplica a rotação em torno do centro do polígono
+ * @param {number} angulo - O ângulo em graus para rotação (positivo para horário, negativo para anti-horário)
+ */
+const aplicarRotacao = (angulo) => {
+    if (pontos.length < 3) {
+        alert("É necessário pelo menos 3 pontos para realizar a rotação.");
+        return;
+    }
+
+    // Calcula o centroide da forma
+    const centro = Transformacao.calcularCentroide(pontos);
+
+    // Aplica a rotação a cada ponto
+    pontos = pontos.map(p => Transformacao.rotacionarPonto(p, centro, angulo));
+
+    // Atualiza a GUI e redesenha
+    atualizarPontosCriadosGUI();
+    desenharPontos();
+};
+
 
 /**
  * Retorna o valor informado pelo usuário no input de coordenada X
@@ -108,18 +140,13 @@ const removerUltimoPontoCriado = () => {
 }
 
 /**
- * 
- * @returns {string} Todos os pontos existentes formatados em (x,y)
+ * Retorna uma string formatada com todos os pontos no formato (x, y), apenas com números inteiros.
+ * @returns {string}
  */
 const todosOsPontos = () => {
-    let todosPontos = ''; 
+    return pontos.map(p => `(${Math.round(p.x)}, ${Math.round(p.y)})`).join(' ');
+};
 
-    pontos.forEach(p => {
-        todosPontos = `${todosPontos} ${p.toString()}`; 
-    });
-
-    return todosPontos;
-}
 
 /**
  * Obtém a cor da linha do polígono selecionada pelo usuário
@@ -233,3 +260,4 @@ const ajustarResolucaoCanvas = () => {
      */
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 };
+

@@ -31,7 +31,31 @@ class Transformacao {
         let xNovo = centro.x + (ponto.x - centro.x) * cos - (ponto.y - centro.y) * sin;
         let yNovo = centro.y + (ponto.x - centro.x) * sin + (ponto.y - centro.y) * cos;
 
-        return { x: xNovo, y: yNovo };
+        return { x: Math.round(xNovo), y: Math.round(yNovo) };
+    }
+
+    /**
+     * Aplica o cisalhamento a um ponto
+     * @param {Object} ponto - O ponto a ser transformado {x, y}
+     * @param {number} shX - Fator de cisalhamento no eixo X
+     * @param {number} shY - Fator de cisalhamento no eixo Y
+     * @returns {Object} - Novo ponto transformado {x, y}
+     */
+    static cisalharPonto(ponto, shX, shY) {
+        const novoX = Math.round(ponto.x + shX * ponto.y);
+        const novoY = Math.round(ponto.y + shY * ponto.x);
+        return { x: novoX, y: novoY };
+    }
+
+    /**
+     * Aplica o cisalhamento a um conjunto de pontos
+     * @param {Array} pontos - Lista de pontos [{x, y}]
+     * @param {number} shX - Fator de cisalhamento no eixo X
+     * @param {number} shY - Fator de cisalhamento no eixo Y
+     * @returns {Array} - Lista de pontos transformados [{x, y}]
+     */
+    static cisalharForma(pontos, shX, shY) {
+        return pontos.map(ponto => this.cisalharPonto(ponto, shX, shY));
     }
 }
 

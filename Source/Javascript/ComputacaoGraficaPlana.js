@@ -3,6 +3,45 @@ let pontos = [];
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    // Cisalhamento sentido horário
+    document.querySelector('button[title="Cisalhar sentido horário"]').addEventListener('click', function() {
+        try {
+            let shX = parseFloat(prompt("Digite o fator de cisalhamento em X:", "0.2"));
+            let shY = parseFloat(prompt("Digite o fator de cisalhamento em Y:", "0.0"));
+
+            if (isNaN(shX) || isNaN(shY)) {
+                alert("Valores inválidos! Insira números válidos.");
+                return;
+            }
+
+            pontos = Transformacao.cisalharForma(pontos, shX, shY);
+            atualizarPontosCriadosGUI();
+            desenharPontos();
+        } catch (error) {
+            alert(`Erro ao aplicar cisalhamento horário: ${error.message}`);
+        }
+    });
+
+    // Cisalhamento sentido anti-horário (inverte os fatores)
+    document.querySelector('button[title="Cisalhar sentido anti-horário"]').addEventListener('click', function() {
+        try {
+            let shX = parseFloat(prompt("Digite o fator de cisalhamento em X:", "-0.2"));
+            let shY = parseFloat(prompt("Digite o fator de cisalhamento em Y:", "0.0"));
+
+            if (isNaN(shX) || isNaN(shY)) {
+                alert("Valores inválidos! Insira números válidos.");
+                return;
+            }
+
+            pontos = Transformacao.cisalharForma(pontos, shX, shY);
+            atualizarPontosCriadosGUI();
+            desenharPontos();
+        } catch (error) {
+            alert(`Erro ao aplicar cisalhamento anti-horário: ${error.message}`);
+        }
+    });
+
+
     document.getElementById('criar-ponto').addEventListener('click', function() {
         try {
             let x = obterCoordenadaX();

@@ -218,10 +218,32 @@ const desenharPontos = () => {
         
         // Define as cores utilizando os métodos criados
         ctx.strokeStyle = obterCorDaLinhaPoligono();
-        ctx.fillStyle = obterCorDoPoligono();
+        //ctx.fillStyle = obterCorDoPoligono();
         ctx.lineWidth = 1; // Espessura da linha
         ctx.imageSmoothingEnabled = false; // Evita borrado
 
+        const img = new Image();
+        img.src = "../Images/BackGroundFractal.png"
+
+        img.onload = function (){
+            const pattern = ctx.createPattern(img, "repeat");
+            ctx.fillStyle = pattern;
+
+            const pontoInicial = pontos[0];
+            ctx.beginPath();
+            ctx.moveTo(Math.round(pontoInicial.x), Math.round(pontoInicial.y));
+
+            pontos.forEach(p => {
+                ctx.lineTo(Math.round(p.x), Math.round(p.y));
+            });
+            ctx.closePath;
+            ctx.fill();
+            ctx.stroke();
+        };
+
+        img.onerror = function(){
+            console.error("Erro ao carregar imagem");
+        }
         // Define as propriedades de sombra para o preenchimento
         ctx.shadowOffsetX = 15;
         ctx.shadowOffsetY = 15;

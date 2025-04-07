@@ -3,6 +3,24 @@ let pontos = [];
 
 document.addEventListener('DOMContentLoaded', function() {
 
+        // Translação
+        document.querySelector('button[title="Translação para direita"]').addEventListener('click', function () {
+            aplicarTranslacao(10, 0);
+        });
+    
+        document.querySelector('button[title="Translação para esquerda"]').addEventListener('click', function () {
+            aplicarTranslacao(-10, 0);
+        });
+    
+        document.querySelector('button[title="Translação para cima"]').addEventListener('click', function () {
+            aplicarTranslacao(0, -10);
+        });
+    
+        document.querySelector('button[title="Translação para baixo"]').addEventListener('click', function () {
+            aplicarTranslacao(0, 10);
+        });
+    
+
     // Cisalhamento sentido horário
     document.querySelector('button[title="Cisalhar sentido horário"]').addEventListener('click', function() {
         try {
@@ -85,6 +103,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
+/**
+ * Aplica a translação à forma atual
+ * @param {number} dx - Deslocamento no eixo X
+ * @param {number} dy - Deslocamento no eixo Y
+ */
+const aplicarTranslacao = (dx, dy) => {
+    if (pontos.length < 1) {
+        alert("Nenhum ponto disponível para translação.");
+        return;
+    }
+
+    pontos = Transformacao.transladarForma(pontos, dx, dy);
+    atualizarPontosCriadosGUI();
+    desenharPontos();
+};
+
 
 /**
  * Aplica a rotação em torno do centro do polígono

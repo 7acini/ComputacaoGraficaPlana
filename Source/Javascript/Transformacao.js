@@ -1,4 +1,37 @@
 class Transformacao {
+
+    static escalarForma(pontos, centro, fator) {
+        return pontos.map(p => ({
+            x: centro.x + (p.x - centro.x) * fator,
+            y: centro.y + (p.y - centro.y) * fator
+        }));
+    }
+        
+    /**
+     * Translada um ponto no plano
+     * @param {Object} ponto - O ponto a ser transladado {x, y}
+     * @param {number} dx - Deslocamento no eixo X
+     * @param {number} dy - Deslocamento no eixo Y
+     * @returns {Object} - Novo ponto transladado {x, y}
+     */
+    static transladarPonto(ponto, dx, dy) {
+        return {
+            x: ponto.x + dx,
+            y: ponto.y + dy
+        };
+    }
+    
+    /**
+     * Translada uma forma (lista de pontos)
+     * @param {Array} pontos - Lista de pontos [{x, y}]
+     * @param {number} dx - Deslocamento no eixo X
+     * @param {number} dy - Deslocamento no eixo Y
+     * @returns {Array} - Lista de pontos transladados
+     */
+    static transladarForma(pontos, dx, dy) {
+        return pontos.map(ponto => this.transladarPonto(ponto, dx, dy));
+    }
+    
     /**
      * Calcula o centróide do polígono
      * @param {Array} pontos - Lista de pontos [{x, y}]

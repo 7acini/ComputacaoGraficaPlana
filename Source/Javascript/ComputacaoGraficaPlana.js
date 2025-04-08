@@ -3,6 +3,33 @@ let pontos = [];
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    // Translação
+    document.querySelector('button[title="Translação para direita"]').addEventListener('click', function () {
+        aplicarTranslacao(10, 0);
+    });
+
+    document.querySelector('button[title="Translação para esquerda"]').addEventListener('click', function () {
+        aplicarTranslacao(-10, 0);
+    });
+
+    document.querySelector('button[title="Translação para cima"]').addEventListener('click', function () {
+        aplicarTranslacao(0, -10);
+    });
+
+    document.querySelector('button[title="Translação para baixo"]').addEventListener('click', function () {
+        aplicarTranslacao(0, 10);
+    });
+    
+    // Escala - Aumentar
+    document.querySelector('button[title="Aumentar escala"]').addEventListener('click', function () {
+        aplicarEscala(1.1); // Escala de 110%
+    });
+
+    // Escala - Diminuir
+    document.querySelector('button[title="Diminuir escala"]').addEventListener('click', function () {
+        aplicarEscala(0.9); // Escala de 90%
+    });
+    
     // Cisalhamento sentido horário
     document.querySelector('button[title="Cisalhar sentido horário"]').addEventListener('click', function() {
         try {
@@ -85,6 +112,42 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
+/**
+ * Aplica a transformação de escala em torno do centroide
+ * @param {number} fator - Fator de escala (maior que 1 aumenta, entre 0 e 1 diminui)
+ */
+const aplicarEscala = (fator) => {
+    if (pontos.length < 3) {
+        alert("É necessário pelo menos 3 pontos para aplicar escala.");
+        return;
+    }
+
+    const centro = Transformacao.calcularCentroide(pontos);
+    pontos = Transformacao.escalarForma(pontos, centro, fator);
+
+    atualizarPontosCriadosGUI();
+    desenharPontos();
+};
+
+
+
+/**
+ * Aplica a translação à forma atual
+ * @param {number} dx - Deslocamento no eixo X
+ * @param {number} dy - Deslocamento no eixo Y
+ */
+const aplicarTranslacao = (dx, dy) => {
+    if (pontos.length < 1) {
+        alert("Nenhum ponto disponível para translação.");
+        return;
+    }
+
+    pontos = Transformacao.transladarForma(pontos, dx, dy);
+    atualizarPontosCriadosGUI();
+    desenharPontos();
+};
+
 
 /**
  * Aplica a rotação em torno do centro do polígono

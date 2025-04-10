@@ -22,14 +22,14 @@
   
   /* Lado esquerdo: canvas */
   #sessao-canvas {
-    width: 50%;
+    width: 70%;
     height: 100%;
     background-color: white;
   }
   
   /* Lado direito: seção de controles */
   #sessao-direita {
-    width: 50%;
+    width: 30%;
     height: 100%;
     background-color: blue;
     box-shadow: -5px 0 5px rgba(0, 0, 0, 0.5);

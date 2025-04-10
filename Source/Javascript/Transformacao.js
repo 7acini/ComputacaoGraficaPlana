@@ -1,12 +1,5 @@
 class Transformacao {
-
-    static escalarForma(pontos, centro, fator) {
-        return pontos.map(p => ({
-            x: centro.x + (p.x - centro.x) * fator,
-            y: centro.y + (p.y - centro.y) * fator
-        }));
-    }
-        
+    
     /**
      * Translada um ponto no plano
      * @param {Object} ponto - O ponto a ser transladado {x, y}
@@ -32,6 +25,13 @@ class Transformacao {
         return pontos.map(ponto => this.transladarPonto(ponto, dx, dy));
     }
     
+    static escalarForma(pontos, centro, fator) {
+        return pontos.map(p => ({
+            x: centro.x + (p.x - centro.x) * fator,
+            y: centro.y + (p.y - centro.y) * fator
+        }));
+    }
+
     /**
      * Calcula o centróide do polígono
      * @param {Array} pontos - Lista de pontos [{x, y}]
@@ -92,5 +92,5 @@ class Transformacao {
     }
 }
 
-// Certifique-se de que a classe está acessível globalmente
+// Classe está acessível globalmente
 window.Transformacao = Transformacao;

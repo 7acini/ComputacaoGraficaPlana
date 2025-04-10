@@ -281,7 +281,7 @@ const desenharPontos = () => {
         
         // Define as cores utilizando os métodos criados
         ctx.strokeStyle = obterCorDaLinhaPoligono();
-        //ctx.fillStyle = obterCorDoPoligono();
+        // ctx.fillStyle = obterCorDoPoligono();
         ctx.lineWidth = 1; // Espessura da linha
         ctx.imageSmoothingEnabled = false; // Evita borrado
 

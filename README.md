@@ -103,7 +103,7 @@ open ComputacaoGraficaPlana.html
 
 ## 👨‍💻 Autores
 
-Projeto desenvolvido por [Guilherme Facini (7acini)](https://github.com/7acini) e (Nicolas Fischer)[https://github.com/NicolasFischer2002]
+Projeto desenvolvido por [Guilherme Facini (7acini)](https://github.com/7acini) e [Nicolas Fischer](https://github.com/NicolasFischer2002)
 
 ---
 
